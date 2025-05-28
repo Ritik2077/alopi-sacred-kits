@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Sparkles, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import { Sparkles, Star } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
@@ -39,16 +39,18 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { name: 'Facebook', icon: Facebook, url: '#' },
-    { name: 'Twitter', icon: Twitter, url: '#' },
-    { name: 'Instagram', icon: Instagram, url: '#' },
-    { name: 'YouTube', icon: Youtube, url: '#' }
+    { name: 'Facebook', icon: Star, url: '#' },
+    { name: 'Twitter', icon: Star, url: '#' },
+    { name: 'Instagram', icon: Star, url: '#' },
+    { name: 'YouTube', icon: Star, url: '#' }
   ];
 
   return (
     <footer className="bg-gray-900 text-white relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23f97316" fill-opacity="0.05"%3E%3Cpath d="M30 30c0-16.569-13.431-30-30-30s-30 13.431-30 30 13.431 30 30 30 30-13.431 30-30z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+      <div className="absolute inset-0 opacity-30" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f97316' fill-opacity='0.05'%3E%3Cpath d='M30 30c0-16.569-13.431-30-30-30s-30 13.431-30 30 13.431 30 30 30 30-13.431 30-30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+      }}></div>
       
       <div className="relative z-10">
         {/* Newsletter Section */}
@@ -101,15 +103,15 @@ const Footer = () => {
                 {/* Contact Info */}
                 <div className="space-y-3">
                   <div className="flex items-center gap-3 text-gray-300">
-                    <Phone className="w-5 h-5 text-orange-400" />
+                    <Star className="w-5 h-5 text-orange-400" />
                     <span>+91 98765 43210</span>
                   </div>
                   <div className="flex items-center gap-3 text-gray-300">
-                    <Mail className="w-5 h-5 text-orange-400" />
+                    <Star className="w-5 h-5 text-orange-400" />
                     <span>support@alopi.com</span>
                   </div>
                   <div className="flex items-center gap-3 text-gray-300">
-                    <MapPin className="w-5 h-5 text-orange-400" />
+                    <Star className="w-5 h-5 text-orange-400" />
                     <span>Mumbai, Maharashtra, India</span>
                   </div>
                 </div>

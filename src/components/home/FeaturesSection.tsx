@@ -1,24 +1,24 @@
 
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import { Clock, Shield, Heart, Sparkles, Star, Truck } from "lucide-react";
+import { Sparkles, Star } from "lucide-react";
 
 const FeaturesSection = () => {
   const features = [
     {
-      icon: Clock,
+      icon: Star,
       title: "Daily Fresh Delivery",
       description: "Fresh pooja essentials delivered to your doorstep every morning before your prayer time",
       color: "from-blue-500 to-blue-600"
     },
     {
-      icon: Shield,
+      icon: Sparkles,
       title: "Authentically Sourced",
       description: "Premium quality items sourced directly from traditional suppliers and verified temples",
       color: "from-green-500 to-green-600"
     },
     {
-      icon: Heart,
+      icon: Star,
       title: "Personalized Kits",
       description: "Customized according to your family traditions, festivals, and special occasions",
       color: "from-red-500 to-red-600"
@@ -36,7 +36,7 @@ const FeaturesSection = () => {
       color: "from-yellow-500 to-yellow-600"
     },
     {
-      icon: Truck,
+      icon: Sparkles,
       title: "Flexible Plans",
       description: "Choose from daily, weekly, or monthly subscriptions with easy pause and resume options",
       color: "from-orange-500 to-orange-600"
@@ -46,7 +46,9 @@ const FeaturesSection = () => {
   return (
     <section className="py-20 bg-white relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23f97316" fill-opacity="0.02"%3E%3Cpath d="M20 20c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+      <div className="absolute inset-0 opacity-30" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f97316' fill-opacity='0.02'%3E%3Cpath d='M20 20c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+      }}></div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
