@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Star, Heart, ShoppingCart, Search, Filter, Grid, List, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "@/contexts/CartContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -16,6 +16,7 @@ const Shop = () => {
   const [filterCategory, setFilterCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
+  const { addToCart, getTotalItems } = useCart();
 
   const categories = [
     { id: 'all', name: 'All Products', count: 45 },
@@ -172,6 +173,16 @@ const Shop = () => {
     }
   });
 
+  const handleAddToCart = (product: typeof products[0]) => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.currentPrice,
+      image: product.image,
+      originalPrice: product.originalPrice
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
       <Navbar />
@@ -282,7 +293,7 @@ const Shop = () => {
                 className="rounded-full border-orange-300 text-orange-700 hover:bg-orange-50"
               >
                 <ShoppingCart className="w-4 h-4 mr-2" />
-                View Cart
+                View Cart {getTotalItems() > 0 && `(${getTotalItems()})`}
               </Button>
             </div>
 
@@ -362,7 +373,10 @@ const Shop = () => {
                       </div>
                       
                       <div className={`gap-2 ${viewMode === 'list' ? 'flex' : 'space-y-2'}`}>
-                        <Button className="flex-1 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white">
+                        <Button 
+                          onClick={() => handleAddToCart(product)}
+                          className="flex-1 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white"
+                        >
                           <ShoppingCart className="w-4 h-4 mr-2" />
                           Add to Cart
                         </Button>

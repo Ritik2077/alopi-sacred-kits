@@ -3,11 +3,13 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Star, Clock, Heart } from "lucide-react";
+import { ArrowRight, Star, Clock, Heart, ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "@/contexts/CartContext";
 
 const ProductShowcase = () => {
   const navigate = useNavigate();
+  const { addToCart } = useCart();
 
   const featuredProducts = [
     {
@@ -88,6 +90,16 @@ const ProductShowcase = () => {
       case "Traditional": return "bg-yellow-600";
       default: return "bg-gray-600";
     }
+  };
+
+  const handleAddToCart = (product: typeof featuredProducts[0]) => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.currentPrice,
+      image: product.image,
+      originalPrice: product.originalPrice
+    });
   };
 
   return (
@@ -188,7 +200,11 @@ const ProductShowcase = () => {
                   </div>
                   
                   {/* Add to Cart Button */}
-                  <Button className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white">
+                  <Button 
+                    onClick={() => handleAddToCart(product)}
+                    className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white"
+                  >
+                    <ShoppingCart className="w-4 h-4 mr-2" />
                     Add to Cart
                   </Button>
                 </CardContent>
