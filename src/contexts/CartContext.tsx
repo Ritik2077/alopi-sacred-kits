@@ -9,6 +9,8 @@ export interface CartItem {
   quantity: number;
   image: string;
   originalPrice?: number;
+  isSubscription?: boolean;
+  planDetails?: any;
 }
 
 interface CartContextType {

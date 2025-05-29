@@ -1,19 +1,21 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
+import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ShoppingBag, ArrowLeft } from "lucide-react";
+import { ShoppingBag, ArrowLeft, User, MapPin } from "lucide-react";
 
 const Checkout = () => {
   const navigate = useNavigate();
   const { cartItems, getTotalPrice, clearCart } = useCart();
+  const { user, isAuthenticated, isGuest, saveGuestData, getGuestData } = useAuth();
   const { toast } = useToast();
   
   const [formData, setFormData] = useState({
@@ -27,12 +29,64 @@ const Checkout = () => {
   });
 
   const [isProcessing, setIsProcessing] = useState(false);
+  const [selectedAddress, setSelectedAddress] = useState<string | null>(null);
+
+  // Auto-fill form with user data or guest data
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      setFormData({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        phone: user.phone,
+        address: '',
+        city: '',
+        pincode: ''
+      });
+      
+      // Set default address if available
+      const defaultAddress = user.addresses.find(addr => addr.isDefault);
+      if (defaultAddress) {
+        setSelectedAddress(defaultAddress.id);
+        setFormData(prev => ({
+          ...prev,
+          firstName: defaultAddress.firstName,
+          lastName: defaultAddress.lastName,
+          address: defaultAddress.address,
+          city: defaultAddress.city,
+          pincode: defaultAddress.pincode,
+          phone: defaultAddress.phone
+        }));
+      }
+    } else if (isGuest) {
+      const guestData = getGuestData();
+      if (guestData) {
+        setFormData(guestData);
+      }
+    }
+  }, [isAuthenticated, user, isGuest]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value
     });
+  };
+
+  const handleAddressSelect = (addressId: string) => {
+    const address = user?.addresses.find(addr => addr.id === addressId);
+    if (address) {
+      setSelectedAddress(addressId);
+      setFormData({
+        firstName: address.firstName,
+        lastName: address.lastName,
+        email: user?.email || '',
+        phone: address.phone,
+        address: address.address,
+        city: address.city,
+        pincode: address.pincode
+      });
+    }
   };
 
   const validateForm = () => {
@@ -85,6 +139,11 @@ const Checkout = () => {
       return;
     }
 
+    // Save guest data if in guest mode
+    if (isGuest) {
+      saveGuestData(formData);
+    }
+
     setIsProcessing(true);
 
     // Simulate payment processing
@@ -103,7 +162,7 @@ const Checkout = () => {
       // Clear cart after successful order
       clearCart();
       
-      // Redirect to success page (you can create this page later)
+      // Redirect to success page
       navigate('/', { 
         state: { 
           orderSuccess: true, 
@@ -167,6 +226,16 @@ const Checkout = () => {
             <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
               Checkout
             </h1>
+            {!isAuthenticated && (
+              <Button
+                variant="outline"
+                onClick={() => navigate('/login', { state: { from: location } })}
+                className="ml-auto"
+              >
+                <User className="w-4 h-4 mr-2" />
+                Login for faster checkout
+              </Button>
+            )}
           </div>
           
           <div className="grid lg:grid-cols-2 gap-8">
@@ -174,8 +243,47 @@ const Checkout = () => {
             <Card className="bg-white/90 backdrop-blur-sm border-0 shadow-lg">
               <CardHeader>
                 <CardTitle>Shipping Information</CardTitle>
+                {isGuest && (
+                  <p className="text-sm text-gray-600">
+                    Shopping as guest - your details will be saved for convenience
+                  </p>
+                )}
               </CardHeader>
               <CardContent className="space-y-4">
+                {/* Saved Addresses for authenticated users */}
+                {isAuthenticated && user?.addresses && user.addresses.length > 0 && (
+                  <div className="mb-6">
+                    <Label className="text-base font-semibold mb-3 block">Select Saved Address</Label>
+                    <div className="grid gap-3">
+                      {user.addresses.map((address) => (
+                        <div
+                          key={address.id}
+                          className={`p-4 border-2 rounded-lg cursor-pointer transition-colors ${
+                            selectedAddress === address.id 
+                              ? 'border-orange-500 bg-orange-50' 
+                              : 'border-gray-200 hover:border-gray-300'
+                          }`}
+                          onClick={() => handleAddressSelect(address.id)}
+                        >
+                          <div className="flex items-center gap-2 mb-2">
+                            <MapPin className="w-4 h-4 text-orange-600" />
+                            <span className="font-medium capitalize">{address.type}</span>
+                            {address.isDefault && (
+                              <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Default</span>
+                            )}
+                          </div>
+                          <p className="text-sm text-gray-700">
+                            {address.firstName} {address.lastName}, {address.address}, {address.city}, {address.pincode}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-4 pt-4 border-t">
+                      <Label className="text-base font-semibold">Or enter new address:</Label>
+                    </div>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="firstName">First Name *</Label>

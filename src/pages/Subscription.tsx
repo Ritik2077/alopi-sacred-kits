@@ -4,12 +4,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Check, Star, Crown, Gift, Sparkles, Clock, Heart, Shield, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "@/contexts/CartContext";
+import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const Subscription = () => {
   const [selectedPlan, setSelectedPlan] = useState('quarterly');
   const navigate = useNavigate();
+  const { addToCart } = useCart();
+  const { toast } = useToast();
 
   const plans = [
     {
@@ -104,6 +108,27 @@ const Subscription = () => {
       description: 'Hand-picked items from trusted sources, ensuring purity and authenticity'
     }
   ];
+
+  const handleSubscribe = (plan) => {
+    const subscriptionItem = {
+      id: Date.now(), // Unique ID for subscription
+      name: `${plan.name} Subscription`,
+      price: plan.price,
+      originalPrice: plan.originalPrice,
+      image: "🕉️",
+      isSubscription: true,
+      planDetails: plan
+    };
+
+    addToCart(subscriptionItem);
+    
+    toast({
+      title: "Subscription Added!",
+      description: `${plan.name} has been added to your cart`,
+    });
+
+    navigate('/subscription-cart');
+  };
 
   const testimonials = [
     {
@@ -237,9 +262,9 @@ const Subscription = () => {
                           ? 'bg-green-600 hover:bg-green-700 text-white'
                           : 'bg-gray-800 hover:bg-gray-900 text-white'
                     }`}
-                    onClick={() => navigate('/checkout')}
+                    onClick={() => handleSubscribe(plan)}
                   >
-                    {selectedPlan === plan.id ? 'Selected - Continue' : 'Select This Plan'}
+                    Subscribe Now
                   </Button>
                 </CardContent>
               </Card>
@@ -265,6 +290,35 @@ const Subscription = () => {
                 </Card>
               ))}
             </div>
+          </div>
+
+          {/* Detailed Subscription Benefits */}
+          <div className="mb-16">
+            <Card className="bg-gradient-to-r from-orange-50 to-red-50 border-0">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-center text-gray-800 mb-8">Why Choose Alopi Subscription?</h3>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h4 className="font-bold text-lg mb-4">🎯 Convenience & Reliability</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li>• Never run out of pooja essentials</li>
+                      <li>• Scheduled delivery before your prayer time</li>
+                      <li>• Skip the daily market trips</li>
+                      <li>• Consistent quality you can trust</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg mb-4">💰 Value & Savings</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li>• Up to 45% savings compared to retail</li>
+                      <li>• No delivery charges</li>
+                      <li>• Bulk pricing benefits</li>
+                      <li>• Festival special inclusions at no extra cost</li>
+                    </ul>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
           {/* FAQ Section */}

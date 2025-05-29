@@ -1,14 +1,16 @@
 
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X, ShoppingCart, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { getTotalItems } = useCart();
+  const { isAuthenticated, user, isGuest } = useAuth();
 
   const navigationItems = [
     { name: 'Home', path: '/' },
@@ -51,7 +53,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Cart and CTA */}
+          {/* Cart, Profile, and CTA */}
           <div className="hidden md:flex items-center space-x-4">
             <Button
               variant="outline"
@@ -66,6 +68,17 @@ const Navbar = () => {
                 </span>
               )}
             </Button>
+
+            {/* Profile/Login Button */}
+            <Button
+              variant="outline"
+              onClick={() => navigate(isAuthenticated ? '/profile' : '/login')}
+              className="border-gray-300 text-gray-700 hover:bg-gray-50"
+            >
+              <User className="w-4 h-4 mr-2" />
+              {isAuthenticated ? user?.firstName || 'Profile' : isGuest ? 'Guest' : 'Login'}
+            </Button>
+            
             <Button 
               onClick={() => navigate('/subscription')}
               className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white"
@@ -113,6 +126,19 @@ const Navbar = () => {
                   <ShoppingCart className="w-4 h-4 mr-2" />
                   Cart {getTotalItems() > 0 && `(${getTotalItems()})`}
                 </Button>
+                
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    navigate(isAuthenticated ? '/profile' : '/login');
+                    setIsMenuOpen(false);
+                  }}
+                  className="border-gray-300 text-gray-700 hover:bg-gray-50 w-full"
+                >
+                  <User className="w-4 h-4 mr-2" />
+                  {isAuthenticated ? user?.firstName || 'Profile' : isGuest ? 'Guest' : 'Login'}
+                </Button>
+                
                 <Button 
                   onClick={() => {
                     navigate('/subscription');
