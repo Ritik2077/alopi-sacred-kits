@@ -14,80 +14,79 @@ const ProductShowcase = () => {
   const featuredProducts = [
     {
       id: 1,
-      name: "Complete Daily Pooja Kit",
-      description: "Complete 7-day pooja essentials for home worship",
-      originalPrice: 849,
-      currentPrice: 399,
-      image: "daily-kit",
-      badge: "Bestseller",
+      name: "Maharishi Hawan Samagri",
+      description: "Premium quality hawan samagri with sacred herbs for spiritual rituals",
+      originalPrice: 350,
+      currentPrice: 280,
+      image: "hawan-samagri",
+      badge: "Best Seller",
       rating: 4.9,
       reviews: 2847
     },
     {
-      id: 2,
-      name: "Premium Ashtagandha Tika Set",
-      description: "Authentic Ashtagandha powder set (Pack of 5)",
-      originalPrice: 599,
-      currentPrice: 449,
-      image: "ashtagandha",
-      badge: "Premium",
-      rating: 4.8,
-      reviews: 1205
-    },
-    {
-      id: 3,
-      name: "Festival Special Combo",
-      description: "Special combo for Diwali and other major festivals",
-      originalPrice: 1299,
-      currentPrice: 899,
-      image: "festival-combo",
-      badge: "Festival Special",
-      rating: 4.9,
-      reviews: 856
-    },
-    {
       id: 4,
-      name: "Divine Incense Collection",
-      description: "Premium incense sticks and dhoop collection",
-      originalPrice: 449,
-      currentPrice: 299,
-      image: "incense",
-      badge: "New",
-      rating: 4.7,
-      reviews: 634
+      name: "Rudraksh Studded Tree",
+      description: "Sacred rudraksh tree for spiritual energy and prosperity",
+      originalPrice: 2500,
+      currentPrice: 1999,
+      image: "rudraksh-tree",
+      badge: "Sacred",
+      rating: 4.9,
+      reviews: 456
     },
     {
       id: 5,
-      name: "Sacred Oil & Ghee Set",
-      description: "Pure cow ghee and essential oils for lamps",
-      originalPrice: 699,
-      currentPrice: 499,
-      image: "oil-ghee",
-      badge: "Pure",
+      name: "108 Rudraksh Mala",
+      description: "Authentic 108 bead rudraksh mala for meditation and chanting",
+      originalPrice: 899,
+      currentPrice: 749,
+      image: "rudraksh-mala",
+      badge: "Authentic",
       rating: 4.8,
-      reviews: 945
+      reviews: 623
     },
     {
-      id: 6,
-      name: "Pooja Thali Complete Set",
-      description: "Traditional brass thali with all accessories",
+      id: 8,
+      name: "Clay Ganesha Idol",
+      description: "Eco-friendly clay Ganesha idol for festive celebrations",
+      originalPrice: 799,
+      currentPrice: 649,
+      image: "clay-ganesha",
+      badge: "Eco-Friendly",
+      rating: 4.8,
+      reviews: 567
+    },
+    {
+      id: 13,
+      name: "Brass Pooja Thali Set",
+      description: "Complete brass thali set with all traditional accessories",
       originalPrice: 1599,
-      currentPrice: 1199,
-      image: "thali-set",
-      badge: "Traditional",
+      currentPrice: 1299,
+      image: "brass-thali",
+      badge: "Complete Set",
       rating: 4.9,
-      reviews: 456
+      reviews: 345
+    },
+    {
+      id: 15,
+      name: "Panchamrit Set",
+      description: "Complete panchamrit ingredients for abhishek rituals",
+      originalPrice: 399,
+      currentPrice: 329,
+      image: "panchamrit",
+      badge: "Sacred",
+      rating: 4.8,
+      reviews: 234
     }
   ];
 
   const getBadgeColor = (badge: string) => {
     switch (badge) {
-      case "Bestseller": return "bg-red-600";
-      case "Premium": return "bg-purple-600";
-      case "Festival Special": return "bg-orange-600";
-      case "New": return "bg-green-600";
-      case "Pure": return "bg-blue-600";
-      case "Traditional": return "bg-yellow-600";
+      case "Best Seller": return "bg-red-600";
+      case "Sacred": return "bg-purple-600";
+      case "Authentic": return "bg-blue-600";
+      case "Eco-Friendly": return "bg-green-600";
+      case "Complete Set": return "bg-yellow-600";
       default: return "bg-gray-600";
     }
   };
@@ -107,13 +106,13 @@ const ProductShowcase = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-orange-200 rounded-full px-4 py-2 mb-4">
-            <Clock className="w-4 h-4 text-orange-600" />
-            <span className="text-sm font-medium text-gray-700">Shop the Divine Deals of the Day</span>
+        <div className="text-center mb-16 animate-slide-up">
+          <div className="inline-flex items-center gap-2 glass-card px-6 py-3 mb-6 hover-lift">
+            <Clock className="w-5 h-5 text-orange-600 animate-bounce-subtle" />
+            <span className="text-sm font-medium text-gray-700">Blessed Products of the Day</span>
           </div>
           
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-6 animate-scale-in">
             <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
               Sacred Essentials
             </span>
@@ -121,31 +120,32 @@ const ProductShowcase = () => {
             For Every Devotion
           </h2>
           
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Discover our handpicked collection of premium pooja items, blessed and prepared with devotion 
-            to enhance your spiritual journey.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
+            Discover our handpicked collection of premium spiritual products, each blessed and prepared with devotion 
+            to enhance your sacred journey and connect you with the divine.
           </p>
         </div>
 
         {/* Products Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {featuredProducts.map((product) => (
+          {featuredProducts.map((product, index) => (
             <Card 
               key={product.id}
-              className="group hover:shadow-2xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm hover:-translate-y-1 overflow-hidden"
+              className="group glass-card hover-lift overflow-hidden animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative">
                 {/* Product Image Placeholder */}
                 <div className="h-64 bg-gradient-to-br from-orange-100 to-red-100 flex items-center justify-center relative overflow-hidden">
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-gradient-to-br from-orange-300 to-red-400 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <div className="text-center p-4">
+                    <div className="w-20 h-20 bg-gradient-to-br from-orange-300 to-red-400 rounded-full flex items-center justify-center mx-auto mb-2 animate-bounce-subtle">
                       <span className="text-2xl">🕉️</span>
                     </div>
-                    <p className="text-sm text-gray-600 font-medium">{product.name}</p>
+                    <p className="text-sm text-gray-600 font-medium line-clamp-2">{product.name}</p>
                   </div>
                   
                   {/* Badge */}
-                  <Badge className={`absolute top-3 left-3 ${getBadgeColor(product.badge)} text-white px-2 py-1`}>
+                  <Badge className={`absolute top-3 left-3 ${getBadgeColor(product.badge)} text-white px-2 py-1 animate-pulse-glow`}>
                     {product.badge}
                   </Badge>
                   
@@ -153,14 +153,14 @@ const ProductShowcase = () => {
                   <Button 
                     variant="ghost" 
                     size="sm" 
-                    className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white group-hover:scale-110 transition-transform"
+                    className="absolute top-3 right-3 w-8 h-8 rounded-full glass-card hover-lift group-hover:scale-110 transition-transform"
                   >
                     <Heart className="w-4 h-4" />
                   </Button>
                   
                   {/* Quick View on Hover */}
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <Button className="bg-white text-gray-800 hover:bg-gray-100">
+                    <Button className="glass-card text-gray-800 hover:bg-white/90 hover-lift">
                       Quick View
                     </Button>
                   </div>
@@ -187,14 +187,14 @@ const ProductShowcase = () => {
                   </p>
                   
                   {/* Pricing */}
-                  <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-center gap-2 mb-4 flex-wrap">
                     <span className="text-xl font-bold text-gray-800">
                       ₹{product.currentPrice}
                     </span>
                     <span className="text-sm text-gray-500 line-through">
                       ₹{product.originalPrice}
                     </span>
-                    <Badge variant="secondary" className="bg-green-100 text-green-800">
+                    <Badge variant="secondary" className="bg-green-100 text-green-800 text-xs">
                       {Math.round((1 - product.currentPrice / product.originalPrice) * 100)}% OFF
                     </Badge>
                   </div>
@@ -202,7 +202,7 @@ const ProductShowcase = () => {
                   {/* Add to Cart Button */}
                   <Button 
                     onClick={() => handleAddToCart(product)}
-                    className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white"
+                    className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white hover-lift"
                   >
                     <ShoppingCart className="w-4 h-4 mr-2" />
                     Add to Cart
@@ -214,12 +214,12 @@ const ProductShowcase = () => {
         </div>
 
         {/* View All Products CTA */}
-        <div className="text-center">
+        <div className="text-center animate-fade-in">
           <Button 
             size="lg" 
             variant="outline"
             onClick={() => navigate('/shop')}
-            className="border-2 border-orange-600 text-orange-700 hover:bg-orange-600 hover:text-white px-8 py-3 rounded-full font-semibold group"
+            className="glass-card border-none text-orange-700 hover:bg-orange-600 hover:text-white px-8 py-3 font-semibold group hover-lift"
           >
             View All Sacred Products
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />

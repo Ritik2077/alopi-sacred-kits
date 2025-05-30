@@ -22,17 +22,17 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-orange-100">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass-nav animate-slide-up">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
           {/* Logo */}
-          <div className="flex-shrink-0 cursor-pointer" onClick={() => navigate('/')}>
+          <div className="flex-shrink-0 cursor-pointer hover-lift" onClick={() => navigate('/')}>
             <div className="flex items-center">
-              <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">A</span>
+              <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center shadow-lg hover-glow">
+                <span className="text-white font-bold text-lg">🕉️</span>
               </div>
-              <span className="ml-2 text-xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+              <span className="ml-3 text-xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
                 Alopi
               </span>
             </div>
@@ -45,9 +45,10 @@ const Navbar = () => {
                 <button
                   key={item.name}
                   onClick={() => navigate(item.path)}
-                  className="text-gray-700 hover:text-orange-600 px-3 py-2 text-sm font-medium transition-colors"
+                  className="text-gray-700 hover:text-orange-600 px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 relative group"
                 >
                   {item.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"></span>
                 </button>
               ))}
             </div>
@@ -58,12 +59,12 @@ const Navbar = () => {
             <Button
               variant="outline"
               onClick={() => navigate('/cart')}
-              className="relative border-orange-300 text-orange-700 hover:bg-orange-50"
+              className="relative glass-card border-orange-200 text-orange-700 hover:bg-orange-50 hover-lift"
             >
               <ShoppingCart className="w-4 h-4 mr-2" />
-              Cart
+              <span className="hidden sm:inline">Cart</span>
               {getTotalItems() > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-bounce-subtle">
                   {getTotalItems()}
                 </span>
               )}
@@ -73,17 +74,20 @@ const Navbar = () => {
             <Button
               variant="outline"
               onClick={() => navigate(isAuthenticated ? '/profile' : '/login')}
-              className="border-gray-300 text-gray-700 hover:bg-gray-50"
+              className="glass-card border-gray-300 text-gray-700 hover:bg-gray-50 hover-lift"
             >
               <User className="w-4 h-4 mr-2" />
-              {isAuthenticated ? user?.firstName || 'Profile' : isGuest ? 'Guest' : 'Login'}
+              <span className="hidden sm:inline">
+                {isAuthenticated ? user?.firstName || 'Profile' : isGuest ? 'Guest' : 'Login'}
+              </span>
             </Button>
             
             <Button 
               onClick={() => navigate('/subscription')}
-              className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white"
+              className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white hover-lift animate-pulse-glow"
             >
-              Subscribe Now
+              <span className="hidden sm:inline">Subscribe Now</span>
+              <span className="sm:hidden">Subscribe</span>
             </Button>
           </div>
 
@@ -92,6 +96,7 @@ const Navbar = () => {
             <Button
               variant="ghost"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="glass-card hover-lift"
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </Button>
@@ -100,8 +105,8 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-orange-100">
+          <div className="md:hidden animate-slide-up">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 glass-card mt-2 rounded-lg">
               {navigationItems.map((item) => (
                 <button
                   key={item.name}
@@ -109,7 +114,7 @@ const Navbar = () => {
                     navigate(item.path);
                     setIsMenuOpen(false);
                   }}
-                  className="text-gray-700 hover:text-orange-600 block px-3 py-2 text-base font-medium w-full text-left"
+                  className="text-gray-700 hover:text-orange-600 block px-3 py-2 text-base font-medium w-full text-left rounded-lg hover:bg-orange-50 transition-all duration-300"
                 >
                   {item.name}
                 </button>
@@ -121,7 +126,7 @@ const Navbar = () => {
                     navigate('/cart');
                     setIsMenuOpen(false);
                   }}
-                  className="relative border-orange-300 text-orange-700 hover:bg-orange-50 w-full"
+                  className="relative glass-card border-orange-300 text-orange-700 hover:bg-orange-50 w-full justify-start"
                 >
                   <ShoppingCart className="w-4 h-4 mr-2" />
                   Cart {getTotalItems() > 0 && `(${getTotalItems()})`}
@@ -133,7 +138,7 @@ const Navbar = () => {
                     navigate(isAuthenticated ? '/profile' : '/login');
                     setIsMenuOpen(false);
                   }}
-                  className="border-gray-300 text-gray-700 hover:bg-gray-50 w-full"
+                  className="glass-card border-gray-300 text-gray-700 hover:bg-gray-50 w-full justify-start"
                 >
                   <User className="w-4 h-4 mr-2" />
                   {isAuthenticated ? user?.firstName || 'Profile' : isGuest ? 'Guest' : 'Login'}
@@ -144,7 +149,7 @@ const Navbar = () => {
                     navigate('/subscription');
                     setIsMenuOpen(false);
                   }}
-                  className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white w-full"
+                  className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white w-full animate-pulse-glow"
                 >
                   Subscribe Now
                 </Button>

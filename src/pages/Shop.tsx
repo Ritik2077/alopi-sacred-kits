@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -19,25 +20,27 @@ const Shop = () => {
   const { addToCart, getTotalItems } = useCart();
 
   const categories = [
-    { id: 'all', name: 'All Products', count: 45 },
-    { id: 'daily-kits', name: 'Daily Kits', count: 12 },
-    { id: 'incense', name: 'Incense & Dhoop', count: 8 },
-    { id: 'oils', name: 'Oils & Ghee', count: 6 },
-    { id: 'flowers', name: 'Fresh Flowers', count: 5 },
-    { id: 'sweets', name: 'Prasadam & Sweets', count: 7 },
-    { id: 'accessories', name: 'Pooja Accessories', count: 7 }
+    { id: 'all', name: 'All Products', count: 52 },
+    { id: 'hawan-samagri', name: 'Hawan Samagri', count: 12 },
+    { id: 'beads-malas', name: 'Beads & Malas', count: 8 },
+    { id: 'clay-products', name: 'Clay Products', count: 6 },
+    { id: 'camphor', name: 'Camphor Range', count: 5 },
+    { id: 'cow-dung', name: 'Cow Dung Products', count: 7 },
+    { id: 'miscellaneous', name: 'Miscellaneous', count: 14 }
   ];
 
+  // Enhanced product catalog based on brochure
   const products = [
+    // Hawan Samagri
     {
       id: 1,
-      name: "Complete Daily Pooja Kit",
-      description: "Complete 7-day pooja essentials for home worship including incense, flowers, kumkum, rice, and oil lamp",
-      originalPrice: 849,
-      currentPrice: 399,
-      image: "daily-kit",
-      category: "daily-kits",
-      badge: "Bestseller",
+      name: "Maharishi Hawan Samagri",
+      description: "Premium quality hawan samagri with sacred herbs and ingredients for spiritual rituals",
+      originalPrice: 350,
+      currentPrice: 280,
+      image: "hawan-samagri",
+      category: "hawan-samagri",
+      badge: "Best Seller",
       badgeColor: "bg-red-600",
       rating: 4.9,
       reviews: 2847,
@@ -46,89 +49,93 @@ const Shop = () => {
     },
     {
       id: 2,
-      name: "Premium Ashtagandha Tika Set",
-      description: "Authentic Ashtagandha powder set (Pack of 5) for traditional forehead marking",
-      originalPrice: 599,
-      currentPrice: 449,
-      image: "ashtagandha",
-      category: "accessories",
-      badge: "Premium",
-      badgeColor: "bg-purple-600",
-      rating: 4.8,
-      reviews: 1205,
+      name: "Sambrani Cups",
+      description: "Natural sambrani cups for aromatic smoke and positive vibes",
+      originalPrice: 120,
+      currentPrice: 95,
+      image: "sambrani",
+      category: "hawan-samagri",
+      badge: "Traditional",
+      badgeColor: "bg-orange-600",
+      rating: 4.7,
+      reviews: 1456,
       inStock: true,
-      featured: true
+      featured: false
     },
     {
       id: 3,
-      name: "Festival Special Combo",
-      description: "Special combo for Diwali and other major festivals with premium items and decorations",
-      originalPrice: 1299,
-      currentPrice: 899,
-      image: "festival-combo",
-      category: "daily-kits",
-      badge: "Festival Special",
-      badgeColor: "bg-orange-600",
+      name: "Dhoop Sticks Premium",
+      description: "Hand-rolled dhoop sticks with natural ingredients for daily worship",
+      originalPrice: 180,
+      currentPrice: 149,
+      image: "dhoop-sticks",
+      category: "hawan-samagri",
+      badge: "Pure",
+      badgeColor: "bg-green-600",
+      rating: 4.8,
+      reviews: 987,
+      inStock: true,
+      featured: false
+    },
+    
+    // Beads & Malas
+    {
+      id: 4,
+      name: "Rudraksh Studded Tree",
+      description: "Sacred rudraksh tree for spiritual energy and prosperity",
+      originalPrice: 2500,
+      currentPrice: 1999,
+      image: "rudraksh-tree",
+      category: "beads-malas",
+      badge: "Sacred",
+      badgeColor: "bg-purple-600",
       rating: 4.9,
-      reviews: 856,
+      reviews: 456,
       inStock: true,
       featured: true
     },
     {
-      id: 4,
-      name: "Divine Incense Collection",
-      description: "Premium incense sticks and dhoop collection with natural fragrances",
-      originalPrice: 449,
-      currentPrice: 299,
-      image: "incense",
-      category: "incense",
-      badge: "New",
-      badgeColor: "bg-green-600",
-      rating: 4.7,
-      reviews: 634,
-      inStock: true,
-      featured: false
-    },
-    {
       id: 5,
-      name: "Sacred Cow Ghee & Oil Set",
-      description: "Pure cow ghee and essential oils for oil lamps and aarti",
-      originalPrice: 699,
-      currentPrice: 499,
-      image: "oil-ghee",
-      category: "oils",
-      badge: "Pure",
+      name: "108 Rudraksh Mala",
+      description: "Authentic 108 bead rudraksh mala for meditation and chanting",
+      originalPrice: 899,
+      currentPrice: 749,
+      image: "rudraksh-mala",
+      category: "beads-malas",
+      badge: "Authentic",
       badgeColor: "bg-blue-600",
       rating: 4.8,
-      reviews: 945,
+      reviews: 623,
       inStock: true,
-      featured: false
+      featured: true
     },
     {
       id: 6,
-      name: "Traditional Brass Pooja Thali",
-      description: "Handcrafted brass thali set with all traditional accessories included",
-      originalPrice: 1599,
-      currentPrice: 1199,
-      image: "thali-set",
-      category: "accessories",
-      badge: "Traditional",
-      badgeColor: "bg-yellow-600",
-      rating: 4.9,
-      reviews: 456,
+      name: "Tulsi Mala Premium",
+      description: "Sacred tulsi beads mala for daily prayers and spiritual practice",
+      originalPrice: 299,
+      currentPrice: 249,
+      image: "tulsi-mala",
+      category: "beads-malas",
+      badge: "Pure",
+      badgeColor: "bg-green-600",
+      rating: 4.7,
+      reviews: 834,
       inStock: true,
       featured: false
     },
+    
+    // Clay Products
     {
       id: 7,
-      name: "Fresh Marigold Flowers",
-      description: "Fresh marigold garlands and loose flowers delivered daily",
-      originalPrice: 149,
-      currentPrice: 99,
-      image: "flowers",
-      category: "flowers",
-      badge: "Fresh Daily",
-      badgeColor: "bg-pink-600",
+      name: "Clay Diyas Set (12 pieces)",
+      description: "Handmade clay diyas for festivals and daily lighting",
+      originalPrice: 150,
+      currentPrice: 119,
+      image: "clay-diyas",
+      category: "clay-products",
+      badge: "Handmade",
+      badgeColor: "bg-yellow-600",
       rating: 4.6,
       reviews: 1234,
       inStock: true,
@@ -136,16 +143,127 @@ const Shop = () => {
     },
     {
       id: 8,
-      name: "Prasadam Sweet Box",
-      description: "Assorted traditional sweets prepared with pure ingredients for offerings",
-      originalPrice: 399,
-      currentPrice: 299,
-      image: "sweets",
-      category: "sweets",
-      badge: "Fresh Made",
-      badgeColor: "bg-orange-500",
+      name: "Clay Ganesha Idol",
+      description: "Eco-friendly clay Ganesha idol for festive celebrations",
+      originalPrice: 799,
+      currentPrice: 649,
+      image: "clay-ganesha",
+      category: "clay-products",
+      badge: "Eco-Friendly",
+      badgeColor: "bg-green-600",
+      rating: 4.8,
+      reviews: 567,
+      inStock: true,
+      featured: true
+    },
+    
+    // Camphor Range
+    {
+      id: 9,
+      name: "Pure Camphor Tablets",
+      description: "100% pure camphor tablets for aarti and spiritual cleansing",
+      originalPrice: 89,
+      currentPrice: 75,
+      image: "camphor",
+      category: "camphor",
+      badge: "Pure",
+      badgeColor: "bg-blue-600",
+      rating: 4.7,
+      reviews: 789,
+      inStock: true,
+      featured: false
+    },
+    {
+      id: 10,
+      name: "Camphor Oil",
+      description: "Pure camphor oil for lamps and aromatic purposes",
+      originalPrice: 199,
+      currentPrice: 169,
+      image: "camphor-oil",
+      category: "camphor",
+      badge: "Premium",
+      badgeColor: "bg-purple-600",
+      rating: 4.6,
+      reviews: 345,
+      inStock: true,
+      featured: false
+    },
+    
+    // Cow Dung Products
+    {
+      id: 11,
+      name: "Cow Dung Cake (Pack of 10)",
+      description: "Organic cow dung cakes for hawan and spiritual rituals",
+      originalPrice: 199,
+      currentPrice: 159,
+      image: "cow-dung-cake",
+      category: "cow-dung",
+      badge: "Organic",
+      badgeColor: "bg-green-600",
+      rating: 4.5,
+      reviews: 456,
+      inStock: true,
+      featured: false
+    },
+    {
+      id: 12,
+      name: "Gomay Agarbatti",
+      description: "Natural cow dung incense sticks with herbal fragrances",
+      originalPrice: 129,
+      currentPrice: 99,
+      image: "gomay-agarbatti",
+      category: "cow-dung",
+      badge: "Natural",
+      badgeColor: "bg-green-600",
+      rating: 4.6,
+      reviews: 234,
+      inStock: true,
+      featured: false
+    },
+    
+    // Miscellaneous
+    {
+      id: 13,
+      name: "Brass Pooja Thali Set",
+      description: "Complete brass thali set with all traditional accessories",
+      originalPrice: 1599,
+      currentPrice: 1299,
+      image: "brass-thali",
+      category: "miscellaneous",
+      badge: "Complete Set",
+      badgeColor: "bg-yellow-600",
+      rating: 4.9,
+      reviews: 345,
+      inStock: true,
+      featured: true
+    },
+    {
+      id: 14,
+      name: "Kumkum Tilak Set",
+      description: "Premium quality kumkum and tilak powder set",
+      originalPrice: 249,
+      currentPrice: 199,
+      image: "kumkum-tilak",
+      category: "miscellaneous",
+      badge: "Premium",
+      badgeColor: "bg-red-600",
       rating: 4.7,
       reviews: 567,
+      inStock: true,
+      featured: false
+    },
+    {
+      id: 15,
+      name: "Panchamrit Set",
+      description: "Complete panchamrit ingredients for abhishek rituals",
+      originalPrice: 399,
+      currentPrice: 329,
+      image: "panchamrit",
+      category: "miscellaneous",
+      badge: "Sacred",
+      badgeColor: "bg-purple-600",
+      rating: 4.8,
+      reviews: 234,
       inStock: true,
       featured: false
     }
@@ -169,7 +287,7 @@ const Shop = () => {
       case 'newest':
         return b.id - a.id;
       default:
-        return b.reviews - a.reviews; // Popular = most reviews
+        return b.reviews - a.reviews;
     }
   });
 
@@ -184,20 +302,20 @@ const Shop = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-300 to-orange-300 animate-fade-in">
       <Navbar />
       
       <div className="pt-20 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm border border-orange-200 rounded-full px-4 py-2 mb-6">
-              <Sparkles className="w-4 h-4 text-orange-600" />
-              <span className="text-sm font-medium text-gray-700">Sacred Collection</span>
+          <div className="text-center mb-12 animate-slide-up">
+            <div className="inline-flex items-center gap-2 glass-card px-6 py-3 mb-6 hover-lift">
+              <Sparkles className="w-5 h-5 text-orange-600 animate-bounce-subtle" />
+              <span className="text-sm font-medium text-gray-700">Rooted in Tradition, Dedicated to Devotion</span>
             </div>
             
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6 animate-scale-in">
               Shop Sacred
               <br />
               <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
@@ -205,34 +323,34 @@ const Shop = () => {
               </span>
             </h1>
             
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover our handpicked collection of premium pooja items, blessed and prepared with 
-              devotion to enhance your spiritual journey.
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Discover our authentic collection of spiritual products, each blessed and prepared with 
+              devotion to enhance your sacred journey and connect you with the divine.
             </p>
           </div>
 
           {/* Search and Filters */}
-          <div className="mb-8">
+          <div className="mb-8 animate-slide-up">
             <div className="flex flex-col lg:flex-row gap-4 items-center justify-between mb-6">
               
               {/* Search Bar */}
-              <div className="relative flex-1 max-w-md">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <div className="relative flex-1 max-w-md w-full">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <Input
-                  placeholder="Search for products..."
+                  placeholder="Search sacred products..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 pr-4 py-3 rounded-full border-gray-300 focus:border-orange-500"
+                  className="pl-12 pr-4 py-3 glass-card border-none focus:ring-2 focus:ring-orange-500 text-base"
                 />
               </div>
 
               {/* Sort and View Options */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 w-full lg:w-auto">
                 <Select value={sortBy} onValueChange={setSortBy}>
-                  <SelectTrigger className="w-48 rounded-full">
+                  <SelectTrigger className="w-full lg:w-48 glass-card border-none">
                     <SelectValue placeholder="Sort by" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="glass-card">
                     <SelectItem value="popular">Most Popular</SelectItem>
                     <SelectItem value="newest">Newest First</SelectItem>
                     <SelectItem value="price-low">Price: Low to High</SelectItem>
@@ -241,12 +359,12 @@ const Shop = () => {
                   </SelectContent>
                 </Select>
 
-                <div className="flex bg-white rounded-full p-1 border border-gray-300">
+                <div className="flex glass-card rounded-full p-1">
                   <Button
                     variant={viewMode === 'grid' ? 'default' : 'ghost'}
                     size="sm"
                     onClick={() => setViewMode('grid')}
-                    className="rounded-full px-3"
+                    className="rounded-full px-3 hover-lift"
                   >
                     <Grid className="w-4 h-4" />
                   </Button>
@@ -254,7 +372,7 @@ const Shop = () => {
                     variant={viewMode === 'list' ? 'default' : 'ghost'}
                     size="sm"
                     onClick={() => setViewMode('list')}
-                    className="rounded-full px-3"
+                    className="rounded-full px-3 hover-lift"
                   >
                     <List className="w-4 h-4" />
                   </Button>
@@ -263,16 +381,16 @@ const Shop = () => {
             </div>
 
             {/* Category Filters */}
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
               {categories.map((category) => (
                 <Button
                   key={category.id}
                   variant={filterCategory === category.id ? 'default' : 'outline'}
                   onClick={() => setFilterCategory(category.id)}
-                  className={`rounded-full ${
+                  className={`glass-card hover-lift text-sm ${
                     filterCategory === category.id
-                      ? 'bg-gradient-to-r from-orange-600 to-red-600 text-white'
-                      : 'border-gray-300 text-gray-700 hover:bg-orange-50'
+                      ? 'bg-gradient-to-r from-orange-600 to-red-600 text-white border-none'
+                      : 'border-none text-gray-700 hover:bg-orange-50'
                   }`}
                 >
                   {category.name} ({category.count})
@@ -283,14 +401,14 @@ const Shop = () => {
 
           {/* Products Grid */}
           <div className="mb-8">
-            <div className="flex items-center justify-between mb-6">
-              <p className="text-gray-600">
-                Showing {sortedProducts.length} of {products.length} products
+            <div className="flex flex-col sm:flex-row items-center justify-between mb-6 gap-4">
+              <p className="text-gray-600 text-center sm:text-left">
+                Showing {sortedProducts.length} of {products.length} sacred products
               </p>
               <Button
                 variant="outline"
                 onClick={() => navigate('/cart')}
-                className="rounded-full border-orange-300 text-orange-700 hover:bg-orange-50"
+                className="glass-card border-none text-orange-700 hover:bg-orange-50 hover-lift w-full sm:w-auto"
               >
                 <ShoppingCart className="w-4 h-4 mr-2" />
                 View Cart {getTotalItems() > 0 && `(${getTotalItems()})`}
@@ -299,30 +417,31 @@ const Shop = () => {
 
             <div className={`grid gap-6 ${
               viewMode === 'grid' 
-                ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' 
+                ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' 
                 : 'grid-cols-1'
             }`}>
-              {sortedProducts.map((product) => (
+              {sortedProducts.map((product, index) => (
                 <Card 
                   key={product.id}
-                  className={`group hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm hover:-translate-y-1 overflow-hidden ${
-                    viewMode === 'list' ? 'flex flex-row' : ''
+                  className={`group glass-card hover-lift overflow-hidden animate-fade-in ${
+                    viewMode === 'list' ? 'flex flex-col sm:flex-row' : ''
                   }`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className={`relative ${viewMode === 'list' ? 'w-48 flex-shrink-0' : ''}`}>
+                  <div className={`relative ${viewMode === 'list' ? 'sm:w-48 flex-shrink-0' : ''}`}>
                     {/* Product Image */}
                     <div className={`bg-gradient-to-br from-orange-100 to-red-100 flex items-center justify-center relative overflow-hidden ${
-                      viewMode === 'list' ? 'h-full' : 'h-64'
+                      viewMode === 'list' ? 'h-48 sm:h-full' : 'h-64'
                     }`}>
-                      <div className="text-center">
-                        <div className="w-16 h-16 bg-gradient-to-br from-orange-300 to-red-400 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <div className="text-center p-4">
+                        <div className="w-16 h-16 bg-gradient-to-br from-orange-300 to-red-400 rounded-full flex items-center justify-center mx-auto mb-2 animate-bounce-subtle">
                           <span className="text-2xl">🕉️</span>
                         </div>
-                        <p className="text-sm text-gray-600 font-medium px-2">{product.name}</p>
+                        <p className="text-sm text-gray-600 font-medium line-clamp-2">{product.name}</p>
                       </div>
                       
                       {/* Badge */}
-                      <Badge className={`absolute top-3 left-3 ${product.badgeColor} text-white px-2 py-1`}>
+                      <Badge className={`absolute top-3 left-3 ${product.badgeColor} text-white px-2 py-1 text-xs animate-pulse-glow`}>
                         {product.badge}
                       </Badge>
                       
@@ -330,26 +449,26 @@ const Shop = () => {
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white group-hover:scale-110 transition-transform"
+                        className="absolute top-3 right-3 w-8 h-8 rounded-full glass-card hover-lift group-hover:scale-110 transition-transform"
                       >
                         <Heart className="w-4 h-4" />
                       </Button>
                     </div>
                   </div>
                   
-                  <CardContent className={`${viewMode === 'list' ? 'flex-1 p-6 flex flex-col justify-between' : 'p-6'}`}>
+                  <CardContent className={`${viewMode === 'list' ? 'flex-1 p-4 sm:p-6 flex flex-col justify-between' : 'p-6'}`}>
                     {/* Rating */}
                     <div className="flex items-center gap-2 mb-3">
                       <div className="flex items-center gap-1">
                         <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                         <span className="text-sm font-medium text-gray-700">{product.rating}</span>
                       </div>
-                      <span className="text-sm text-gray-500">({product.reviews} reviews)</span>
+                      <span className="text-sm text-gray-500">({product.reviews})</span>
                     </div>
                     
                     {/* Product Info */}
                     <div className={viewMode === 'list' ? 'flex-1' : ''}>
-                      <h3 className="font-bold text-gray-800 mb-2 group-hover:text-orange-600 transition-colors">
+                      <h3 className="font-bold text-gray-800 mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">
                         {product.name}
                       </h3>
                       
@@ -360,28 +479,28 @@ const Shop = () => {
                     
                     {/* Pricing and Actions */}
                     <div>
-                      <div className="flex items-center gap-2 mb-4">
+                      <div className="flex items-center gap-2 mb-4 flex-wrap">
                         <span className="text-xl font-bold text-gray-800">
                           ₹{product.currentPrice}
                         </span>
                         <span className="text-sm text-gray-500 line-through">
                           ₹{product.originalPrice}
                         </span>
-                        <Badge variant="secondary" className="bg-green-100 text-green-800">
+                        <Badge variant="secondary" className="bg-green-100 text-green-800 text-xs">
                           {Math.round((1 - product.currentPrice / product.originalPrice) * 100)}% OFF
                         </Badge>
                       </div>
                       
-                      <div className={`gap-2 ${viewMode === 'list' ? 'flex' : 'space-y-2'}`}>
+                      <div className={`gap-2 ${viewMode === 'list' ? 'flex flex-col sm:flex-row' : 'space-y-2'}`}>
                         <Button 
                           onClick={() => handleAddToCart(product)}
-                          className="flex-1 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white"
+                          className="flex-1 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white hover-lift"
                         >
                           <ShoppingCart className="w-4 h-4 mr-2" />
                           Add to Cart
                         </Button>
                         {viewMode === 'list' && (
-                          <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50">
+                          <Button variant="outline" className="glass-card border-none text-orange-700 hover:bg-orange-50 hover-lift">
                             Quick View
                           </Button>
                         )}
@@ -394,13 +513,13 @@ const Shop = () => {
           </div>
 
           {/* Load More */}
-          <div className="text-center">
+          <div className="text-center animate-fade-in">
             <Button 
               variant="outline" 
               size="lg"
-              className="border-2 border-orange-600 text-orange-700 hover:bg-orange-600 hover:text-white px-8 py-3 rounded-full font-semibold"
+              className="glass-card border-none text-orange-700 hover:bg-orange-600 hover:text-white px-8 py-3 font-semibold hover-lift"
             >
-              Load More Products
+              Load More Sacred Products
             </Button>
           </div>
         </div>

@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useToast } from "@/hooks/use-toast";
@@ -27,13 +28,23 @@ const Index = () => {
   }, [location.state, toast]);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-300 to-orange-300 animate-fade-in">
       <Navbar />
-      <HeroSection />
-      <FeaturesSection />
-      <ProductShowcase />
-      <TestimonialsSection />
-      <CallToActionSection />
+      <div className="animate-slide-up">
+        <HeroSection />
+      </div>
+      <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+        <FeaturesSection />
+      </div>
+      <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
+        <ProductShowcase />
+      </div>
+      <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
+        <TestimonialsSection />
+      </div>
+      <div className="animate-fade-in" style={{ animationDelay: '0.8s' }}>
+        <CallToActionSection />
+      </div>
       <Footer />
     </div>
   );
