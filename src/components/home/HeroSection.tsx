@@ -85,25 +85,40 @@ const HeroSection = () => {
           
           {/* Right Content - Hero Image */}
           <div className="relative">
-            <div className="relative bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl p-8 backdrop-blur-sm border border-white/20 shadow-2xl">
+            <div className="relative glass-card rounded-3xl p-8 shadow-2xl hover-lift">
               {/* Floating Elements */}
               <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-full opacity-20 animate-pulse"></div>
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-10 animate-pulse delay-1000"></div>
               
-              {/* Main Image Placeholder */}
-              <div className="relative z-10 bg-white/80 backdrop-blur-sm rounded-2xl p-8 text-center">
-                <div className="w-full h-80 bg-gradient-to-br from-orange-200 to-red-200 rounded-xl flex items-center justify-center mb-4">
-                  <div className="text-center">
-                    <Sparkles className="w-16 h-16 text-orange-600 mx-auto mb-4" />
-                    <p className="text-gray-600 font-medium">Sacred Pooja Kit</p>
-                    <p className="text-sm text-gray-500">Daily Essentials Collection</p>
+              {/* Main Image */}
+              <div className="relative z-10 glass rounded-2xl p-6 text-center overflow-hidden">
+                <div className="relative w-full h-80 rounded-xl mb-4 overflow-hidden group">
+                  <img 
+                    src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"
+                    alt="Sacred Pooja Essentials Collection"
+                    className="w-full h-full object-cover rounded-xl transition-all duration-700 group-hover:scale-110"
+                  />
+                  {/* Aesthetic overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-orange-900/30 via-transparent to-yellow-400/20 rounded-xl"></div>
+                  {/* Floating text overlay */}
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <div className="glass-dark rounded-lg p-3 backdrop-blur-md">
+                      <p className="font-semibold text-lg mb-1">Sacred Pooja Kit</p>
+                      <p className="text-sm opacity-90">Daily Essentials Collection</p>
+                    </div>
+                  </div>
+                  {/* Decorative elements */}
+                  <div className="absolute top-4 right-4">
+                    <div className="glass-dark rounded-full p-2 backdrop-blur-md">
+                      <Sparkles className="w-5 h-5 text-yellow-300 animate-pulse" />
+                    </div>
                   </div>
                 </div>
                 
                 {/* Kit Contents Preview */}
                 <div className="grid grid-cols-3 gap-2">
                   {['Incense', 'Flowers', 'Sweets', 'Oil Lamp', 'Kumkum', 'Rice'].map((item, index) => (
-                    <div key={index} className="bg-gradient-to-br from-orange-50 to-red-50 rounded-lg p-2 text-xs text-gray-600 font-medium">
+                    <div key={index} className="glass rounded-lg p-2 text-xs text-gray-600 font-medium hover-lift transition-all duration-300 hover:text-orange-600">
                       {item}
                     </div>
                   ))}
