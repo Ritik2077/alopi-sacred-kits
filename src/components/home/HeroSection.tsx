@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Sparkles, Star } from "lucide-react";
@@ -94,7 +93,7 @@ const HeroSection = () => {
               <div className="relative z-10 glass rounded-2xl p-6 text-center overflow-hidden">
                 <div className="relative w-full h-80 rounded-xl mb-4 overflow-hidden group">
                   <img 
-                    src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"
+                    src="public/IMG_0015.JPG"
                     alt="Sacred Pooja Essentials Collection"
                     className="w-full h-full object-cover rounded-xl transition-all duration-700 group-hover:scale-110"
                   />
@@ -117,7 +116,7 @@ const HeroSection = () => {
                 
                 {/* Kit Contents Preview */}
                 <div className="grid grid-cols-3 gap-2">
-                  {['Incense', 'Flowers', 'Sweets', 'Oil Lamp', 'Kumkum', 'Rice'].map((item, index) => (
+                  {['Incense', 'Flowers', 'Organic', 'Oil Lamp', 'Kumkum', 'Cow Dung'].map((item, index) => (
                     <div key={index} className="glass rounded-lg p-2 text-xs text-gray-600 font-medium hover-lift transition-all duration-300 hover:text-orange-600">
                       {item}
                     </div>
