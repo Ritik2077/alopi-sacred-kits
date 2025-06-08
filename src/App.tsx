@@ -7,6 +7,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "@/contexts/CartContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
+import DevoteeSelection from "./pages/DevoteeSelection";
+import PremiumDevotee from "./pages/PremiumDevotee";
+import LoyalDevotee from "./pages/LoyalDevotee";
 import Subscription from "./pages/Subscription";
 import SubscriptionCart from "./pages/SubscriptionCart";
 import Shop from "./pages/Shop";
@@ -33,6 +36,9 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/devotee-selection" element={<DevoteeSelection />} />
+              <Route path="/premium-devotee" element={<PremiumDevotee />} />
+              <Route path="/loyal-devotee" element={<LoyalDevotee />} />
               <Route path="/subscription" element={<Subscription />} />
               <Route path="/subscription-cart" element={<SubscriptionCart />} />
               <Route path="/shop" element={<Shop />} />
