@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Sparkles, Star } from "lucide-react";
+import { ArrowRight, Play, Sparkles, Star, Heart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
@@ -44,8 +45,18 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button 
                 size="lg" 
-                onClick={() => navigate('/subscription')}
+                onClick={() => navigate('/devotee-selection')}
                 className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-8 py-4 rounded-full font-semibold group"
+              >
+                <Heart className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+                Choose Your Path
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              
+              <Button 
+                size="lg" 
+                onClick={() => navigate('/subscription')}
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 rounded-full font-semibold group"
               >
                 Start Your Spiritual Journey
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
