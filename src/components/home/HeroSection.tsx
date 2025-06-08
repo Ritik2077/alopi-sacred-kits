@@ -37,16 +37,16 @@ const HeroSection = () => {
               </span>
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl">
+            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0">
               Transform your spiritual practice with curated pooja kits delivered fresh to your doorstep. 
               Experience the divine connection through authentic, premium essentials.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row xl:flex-col 2xl:flex-row gap-4 justify-center lg:justify-start max-w-4xl">
               <Button 
                 size="lg" 
                 onClick={() => navigate('/devotee-selection')}
-                className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-8 py-4 rounded-full font-semibold group"
+                className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-6 xl:px-8 py-4 rounded-full font-semibold group w-full sm:w-auto"
               >
                 <Heart className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
                 Choose Your Path
@@ -56,7 +56,7 @@ const HeroSection = () => {
               <Button 
                 size="lg" 
                 onClick={() => navigate('/subscription')}
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 rounded-full font-semibold group"
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 xl:px-8 py-4 rounded-full font-semibold group w-full sm:w-auto"
               >
                 Start Your Spiritual Journey
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -66,7 +66,7 @@ const HeroSection = () => {
                 variant="outline" 
                 size="lg"
                 onClick={() => navigate('/shop')}
-                className="border-2 border-orange-300 text-orange-700 hover:bg-orange-50 px-8 py-4 rounded-full font-semibold group"
+                className="border-2 border-orange-300 text-orange-700 hover:bg-orange-50 px-6 xl:px-8 py-4 rounded-full font-semibold group w-full sm:w-auto"
               >
                 <Play className="mr-2 w-5 h-5" />
                 Explore Products
