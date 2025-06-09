@@ -104,7 +104,7 @@ const HeroSection = () => {
               <div className="relative z-10 glass rounded-2xl p-6 text-center overflow-hidden">
                 <div className="relative w-full h-80 rounded-xl mb-4 overflow-hidden group">
                   <img 
-                    src="public/IMG_0015.JPG"
+                    src="/public/IMG_0015.JPG"
                     alt="Sacred Pooja Essentials Collection"
                     className="w-full h-full object-cover rounded-xl transition-all duration-700 group-hover:scale-110"
                   />
