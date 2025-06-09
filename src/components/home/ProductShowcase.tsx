@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -103,19 +104,19 @@ const ProductShowcase = () => {
   };
 
   const QuickViewContent = ({ product }: { product: typeof featuredProducts[0] }) => (
-    <div className="w-80 max-w-[90vw]">
-      <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+    <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg">
+      <div className="relative h-40 sm:h-48 lg:h-56 mb-4 rounded-lg overflow-hidden">
         <img
           src={product.image}
           alt={product.name}
           className="w-full h-full object-cover"
         />
-        <Badge className={`absolute top-2 left-2 ${getBadgeColor(product.badge)} text-white px-2 py-1`}>
+        <Badge className={`absolute top-2 left-2 ${getBadgeColor(product.badge)} text-white px-2 py-1 text-xs`}>
           {product.badge}
         </Badge>
       </div>
       
-      <div className="space-y-3">
+      <div className="space-y-3 px-1">
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1">
             <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -124,7 +125,7 @@ const ProductShowcase = () => {
           <span className="text-sm text-gray-500">({product.reviews.toLocaleString()} reviews)</span>
         </div>
         
-        <h3 className="font-bold text-lg text-gray-800">{product.name}</h3>
+        <h3 className="font-bold text-lg text-gray-800 leading-tight">{product.name}</h3>
         <p className="text-sm text-gray-600 leading-relaxed">{product.description}</p>
         
         <div className="flex items-center gap-2 flex-wrap">
@@ -141,7 +142,7 @@ const ProductShowcase = () => {
         
         <Button 
           onClick={() => handleAddToCart(product)}
-          className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white"
+          className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white mt-4"
         >
           <ShoppingCart className="w-4 h-4 mr-2" />
           Add to Cart
@@ -184,32 +185,32 @@ const ProductShowcase = () => {
         </div>
 
         {/* Enhanced Products Grid Container */}
-        <div className="relative glass-card rounded-3xl p-8 shadow-2xl hover-lift mb-12">
+        <div className="relative glass-card rounded-3xl p-4 sm:p-6 lg:p-8 shadow-2xl hover-lift mb-12">
           {/* Floating decorative elements for the grid container */}
           <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-full opacity-20 animate-pulse"></div>
           <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-10 animate-pulse delay-1000"></div>
           
-          {/* Products Grid - Updated for mobile 2x2 layout */}
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 relative z-10">
+          {/* Products Grid - Properly optimized for mobile 2x2 and desktop */}
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-8 relative z-10">
             {featuredProducts.map((product, index) => (
               <Card 
                 key={product.id}
-                className="group glass overflow-hidden animate-fade-in border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover-lift rounded-2xl"
+                className="group glass overflow-hidden animate-fade-in border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover-lift rounded-xl lg:rounded-2xl"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="relative">
                   {/* Product Image */}
-                  <div className="relative h-48 md:h-64 overflow-hidden rounded-t-2xl">
+                  <div className="relative h-32 sm:h-40 lg:h-64 overflow-hidden rounded-t-xl lg:rounded-t-2xl">
                     <img
                       src={product.image}
                       alt={product.name}
                       className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                     />
                     {/* Enhanced gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-orange-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-2xl"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-orange-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-xl lg:rounded-t-2xl"></div>
                     
                     {/* Badge with enhanced styling */}
-                    <Badge className={`absolute top-3 left-3 ${getBadgeColor(product.badge)} text-white px-3 py-1 animate-pulse-glow shadow-lg transition-all duration-300 glass-dark backdrop-blur-md`}>
+                    <Badge className={`absolute top-2 left-2 ${getBadgeColor(product.badge)} text-white px-1.5 py-0.5 lg:px-3 lg:py-1 text-xs animate-pulse-glow shadow-lg transition-all duration-300 glass-dark backdrop-blur-md`}>
                       {product.badge}
                     </Badge>
                     
@@ -217,21 +218,26 @@ const ProductShowcase = () => {
                     <Button 
                       variant="ghost" 
                       size="sm" 
-                      className="absolute top-3 right-3 w-10 h-10 rounded-full glass backdrop-blur-md hover-lift group-hover:scale-110 transition-all duration-300 shadow-lg border border-white/20"
+                      className="absolute top-2 right-2 w-8 h-8 lg:w-10 lg:h-10 rounded-full glass backdrop-blur-md hover-lift group-hover:scale-110 transition-all duration-300 shadow-lg border border-white/20"
                     >
-                      <Heart className="w-4 h-4 text-white/80 hover:text-red-400 transition-colors" />
+                      <Heart className="w-3 h-3 lg:w-4 lg:h-4 text-white/80 hover:text-red-400 transition-colors" />
                     </Button>
                     
                     {/* Enhanced Quick View on Hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center rounded-t-2xl">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center rounded-t-xl lg:rounded-t-2xl">
                       <Popover>
                         <PopoverTrigger asChild>
-                          <Button className="glass text-white hover:bg-white/20 hover-lift transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl backdrop-blur-md border border-white/30">
+                          <Button className="glass text-white hover:bg-white/20 hover-lift transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl backdrop-blur-md border border-white/30 text-xs lg:text-sm px-2 py-1 lg:px-4 lg:py-2">
                             Quick View
                           </Button>
                         </PopoverTrigger>
-                        <PopoverContent className="p-0 border-0 bg-transparent shadow-none">
-                          <div className="glass-card p-4 rounded-2xl shadow-2xl backdrop-blur-md border border-white/20">
+                        <PopoverContent 
+                          className="p-0 border-0 bg-transparent shadow-none w-screen max-w-xs sm:max-w-sm lg:max-w-md mx-4"
+                          align="center"
+                          side="top"
+                          sideOffset={10}
+                        >
+                          <div className="glass-card p-4 lg:p-6 rounded-xl lg:rounded-2xl shadow-2xl backdrop-blur-md border border-white/20 bg-white/95">
                             <QuickViewContent product={product} />
                           </div>
                         </PopoverContent>
@@ -239,35 +245,35 @@ const ProductShowcase = () => {
                     </div>
                   </div>
                   
-                  <CardContent className="p-4 md:p-6 glass-card backdrop-blur-sm border-t border-white/20">
+                  <CardContent className="p-3 sm:p-4 lg:p-6 glass-card backdrop-blur-sm border-t border-white/20">
                     {/* Rating with enhanced styling */}
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="flex items-center gap-1 glass-dark rounded-full px-2 py-1 backdrop-blur-sm">
-                        <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        <span className="text-sm font-medium text-gray-700">{product.rating}</span>
+                    <div className="flex items-center gap-1 lg:gap-2 mb-2 lg:mb-3">
+                      <div className="flex items-center gap-1 glass-dark rounded-full px-1.5 py-0.5 lg:px-2 lg:py-1 backdrop-blur-sm">
+                        <Star className="w-3 h-3 lg:w-4 lg:h-4 fill-yellow-400 text-yellow-400" />
+                        <span className="text-xs lg:text-sm font-medium text-gray-700">{product.rating}</span>
                       </div>
-                      <span className="text-sm text-gray-500">({product.reviews.toLocaleString()} reviews)</span>
+                      <span className="text-xs lg:text-sm text-gray-500 hidden sm:inline">({product.reviews.toLocaleString()})</span>
                     </div>
                     
                     {/* Product Name */}
-                    <h3 className="font-bold text-gray-800 mb-2 group-hover:text-orange-600 transition-colors line-clamp-2 text-sm md:text-lg">
+                    <h3 className="font-bold text-gray-800 mb-1.5 lg:mb-2 group-hover:text-orange-600 transition-colors line-clamp-2 text-xs sm:text-sm lg:text-lg leading-tight">
                       {product.name}
                     </h3>
                     
-                    {/* Description */}
-                    <p className="text-xs md:text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">
+                    {/* Description - Hidden on mobile for better spacing */}
+                    <p className="text-xs lg:text-sm text-gray-600 mb-2 lg:mb-4 line-clamp-2 leading-relaxed hidden sm:block">
                       {product.description}
                     </p>
                     
                     {/* Enhanced Pricing */}
-                    <div className="flex items-center gap-1 md:gap-2 mb-4 flex-wrap">
-                      <span className="text-lg md:text-2xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+                    <div className="flex items-center gap-1 lg:gap-2 mb-2 lg:mb-4 flex-wrap">
+                      <span className="text-sm sm:text-lg lg:text-2xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
                         ₹{product.currentPrice.toLocaleString()}
                       </span>
-                      <span className="text-xs md:text-sm text-gray-500 line-through">
+                      <span className="text-xs lg:text-sm text-gray-500 line-through">
                         ₹{product.originalPrice.toLocaleString()}
                       </span>
-                      <Badge variant="secondary" className="bg-gradient-to-r from-green-100 to-green-50 text-green-800 text-xs font-semibold px-1 md:px-2 py-1 shadow-sm">
+                      <Badge variant="secondary" className="bg-gradient-to-r from-green-100 to-green-50 text-green-800 text-xs font-semibold px-1 lg:px-2 py-0.5 lg:py-1 shadow-sm">
                         {Math.round((1 - product.currentPrice / product.originalPrice) * 100)}% OFF
                       </Badge>
                     </div>
@@ -275,9 +281,9 @@ const ProductShowcase = () => {
                     {/* Enhanced Add to Cart Button */}
                     <Button 
                       onClick={() => handleAddToCart(product)}
-                      className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white hover-lift transform transition-all duration-300 shadow-lg hover:shadow-xl rounded-xl glass-dark backdrop-blur-sm border border-orange-500/20 text-xs md:text-sm py-2 md:py-3"
+                      className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white hover-lift transform transition-all duration-300 shadow-lg hover:shadow-xl rounded-lg lg:rounded-xl glass-dark backdrop-blur-sm border border-orange-500/20 text-xs lg:text-sm py-1.5 lg:py-3"
                     >
-                      <ShoppingCart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
+                      <ShoppingCart className="w-3 h-3 lg:w-4 lg:h-4 mr-1 lg:mr-2" />
                       Add to Cart
                     </Button>
                   </CardContent>
