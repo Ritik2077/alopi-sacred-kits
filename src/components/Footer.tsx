@@ -80,11 +80,13 @@ const Footer = () => {
               {/* Brand Section */}
               <div className="lg:col-span-2">
                 <div className="flex items-center space-x-2 mb-6">
-                  <img 
-                    src="/lovable-uploads/8bb721c4-d73a-49d6-93ab-d40af29e6023.png" 
-                    alt="Alopi Logo" 
-                    className="w-16 h-16 object-contain"
-                  />
+                  <div className="bg-white rounded-lg p-2">
+                    <img 
+                      src="/lovable-uploads/8bb721c4-d73a-49d6-93ab-d40af29e6023.png" 
+                      alt="Alopi Logo" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
                 </div>
                 
                 <p className="text-gray-300 mb-6 leading-relaxed">

@@ -26,11 +26,11 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           
           {/* Logo */}
-          <div className="flex-shrink-0 cursor-pointer hover-lift" onClick={() => navigate('/')}>
+          <div className="flex-shrink-0 cursor-pointer" onClick={() => navigate('/')}>
             <img 
               src="/lovable-uploads/8bb721c4-d73a-49d6-93ab-d40af29e6023.png" 
               alt="Alopi Logo" 
-              className="w-12 h-12 object-contain"
+              className="w-16 h-16 object-contain"
             />
           </div>
 

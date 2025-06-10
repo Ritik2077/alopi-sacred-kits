@@ -19,7 +19,7 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           {/* Left Content */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left relative z-20">
             <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm border border-orange-200 rounded-full px-4 py-2 mb-6">
               <Sparkles className="w-4 h-4 text-orange-600" />
               <span className="text-sm font-medium text-gray-700">Sacred Touch, Every Day</span>
@@ -42,7 +42,7 @@ const HeroSection = () => {
               Experience the divine connection through Authentic, Premium essentials.
             </p>
             
-            <div className="flex flex-col sm:flex-row xl:flex-col 2xl:flex-row gap-4 justify-center lg:justify-start max-w-4xl mb-8">
+            <div className="flex flex-col sm:flex-row xl:flex-col 2xl:flex-row gap-4 justify-center lg:justify-start max-w-4xl mb-8 relative z-30">
               <Button 
                 size="lg" 
                 onClick={() => navigate('/devotee-selection')}
@@ -66,7 +66,7 @@ const HeroSection = () => {
                 variant="outline" 
                 size="lg"
                 onClick={() => navigate('/shop')}
-                className="border-2 border-orange-300 text-orange-700 hover:bg-orange-50 px-6 xl:px-8 py-4 rounded-full font-semibold group w-full sm:w-auto transition-all duration-300"
+                className="border-2 border-orange-300 text-orange-700 hover:bg-orange-50 px-6 xl:px-8 py-4 rounded-full font-semibold group w-full sm:w-auto transition-all duration-300 relative z-40"
               >
                 <Play className="mr-2 w-5 h-5" />
                 Explore Products
@@ -94,7 +94,7 @@ const HeroSection = () => {
           </div>
           
           {/* Right Content - Hero Image */}
-          <div className="relative">
+          <div className="relative z-10">
             <div className="relative glass-card rounded-3xl p-8 shadow-2xl hover-lift">
               {/* Floating Elements */}
               <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-full opacity-20 animate-pulse"></div>
