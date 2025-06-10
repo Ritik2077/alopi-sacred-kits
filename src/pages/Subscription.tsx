@@ -418,5 +418,3 @@ const Subscription = () => {
 };
 
 export default Subscription;
-
-</edits_to_apply>
