@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Sparkles, Star, Facebook, Instagram, Youtube, Linkedin, Twitter } from "lucide-react";
+import { Star, Facebook, Instagram, Youtube, Linkedin, Twitter } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
@@ -80,15 +80,11 @@ const Footer = () => {
               {/* Brand Section */}
               <div className="lg:col-span-2">
                 <div className="flex items-center space-x-2 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center">
-                    <Sparkles className="w-7 h-7 text-white" />
-                  </div>
-                  <div>
-                    <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
-                      ALOPI
-                    </h1>
-                    <p className="text-sm text-gray-400 -mt-1">Sacred Essentials</p>
-                  </div>
+                  <img 
+                    src="/lovable-uploads/8bb721c4-d73a-49d6-93ab-d40af29e6023.png" 
+                    alt="Alopi Logo" 
+                    className="w-16 h-16 object-contain"
+                  />
                 </div>
                 
                 <p className="text-gray-300 mb-6 leading-relaxed">

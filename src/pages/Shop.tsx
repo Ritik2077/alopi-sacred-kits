@@ -301,7 +301,7 @@ const Shop = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-300 to-orange-300 animate-fade-in">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 animate-fade-in">
       <Navbar />
       
       <div className="pt-20 pb-16">

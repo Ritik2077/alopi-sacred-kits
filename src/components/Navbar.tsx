@@ -27,16 +27,11 @@ const Navbar = () => {
           
           {/* Logo */}
           <div className="flex-shrink-0 cursor-pointer hover-lift" onClick={() => navigate('/')}>
-            <div className="flex items-center">
-              <img 
-                src="/lovable-uploads/8bb721c4-d73a-49d6-93ab-d40af29e6023.png" 
-                alt="Alopi Logo" 
-                className="w-12 h-12 object-contain"
-              />
-              <span className="ml-3 text-xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-                Alopi
-              </span>
-            </div>
+            <img 
+              src="/lovable-uploads/8bb721c4-d73a-49d6-93ab-d40af29e6023.png" 
+              alt="Alopi Logo" 
+              className="w-12 h-12 object-contain"
+            />
           </div>
 
           {/* Desktop Navigation */}
