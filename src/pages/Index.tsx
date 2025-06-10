@@ -7,7 +7,6 @@ import HeroSection from "@/components/home/HeroSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
 import ProductShowcase from "@/components/home/ProductShowcase";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
-import CallToActionSection from "@/components/home/CallToActionSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -41,9 +40,6 @@ const Index = () => {
       </div>
       <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
         <TestimonialsSection />
-      </div>
-      <div className="animate-fade-in" style={{ animationDelay: '0.8s' }}>
-        <CallToActionSection />
       </div>
       <Footer />
     </div>

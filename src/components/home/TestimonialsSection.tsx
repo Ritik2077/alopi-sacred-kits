@@ -15,6 +15,16 @@ const TestimonialsSection = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Auto-slideshow for mobile
+  useEffect(() => {
+    if (isMobile) {
+      const interval = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % testimonials.length);
+      }, 4000); // Change slide every 4 seconds
+      return () => clearInterval(interval);
+    }
+  }, [isMobile]);
+
   const testimonials = [
     {
       id: 1,
@@ -116,7 +126,7 @@ const TestimonialsSection = () => {
               variant="outline"
               size="icon"
               onClick={prevSlide}
-              className="rounded-full border-orange-200 hover:bg-orange-50"
+              className="rounded-full border-orange-200 hover:bg-orange-50 bg-white/80 backdrop-blur-sm"
             >
               <ChevronLeft className="w-4 h-4" />
             </Button>
@@ -135,7 +145,7 @@ const TestimonialsSection = () => {
               variant="outline"
               size="icon"
               onClick={nextSlide}
-              className="rounded-full border-orange-200 hover:bg-orange-50"
+              className="rounded-full border-orange-200 hover:bg-orange-50 bg-white/80 backdrop-blur-sm"
             >
               <ChevronRight className="w-4 h-4" />
             </Button>
@@ -147,11 +157,11 @@ const TestimonialsSection = () => {
           {getVisibleTestimonials().map((testimonial) => (
             <Card 
               key={testimonial.id}
-              className="group transition-all duration-300 border-0 bg-gradient-to-br from-white to-orange-50 shadow-lg hover:shadow-xl hover:-translate-y-1"
+              className="group transition-all duration-300 border-0 bg-white/20 backdrop-blur-md shadow-lg hover:shadow-xl hover:-translate-y-1 hover:bg-white/30"
             >
               <CardContent className="p-8">
                 {/* Quote Icon */}
-                <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-red-100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-gradient-to-br from-orange-100/80 to-red-100/80 backdrop-blur-sm rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Quote className="w-6 h-6 text-orange-600" />
                 </div>
                 

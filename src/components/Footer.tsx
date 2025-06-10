@@ -17,16 +17,13 @@ const Footer = () => {
     ],
     products: [
       { name: 'Daily Kits', path: '/shop' },
-      { name: 'Festival Specials', path: '/shop' },
-      { name: 'Premium Items', path: '/shop' },
-      { name: 'Gift Cards', path: '/shop' }
+      { name: 'Premium Items', path: '/shop' }
     ],
     support: [
       { name: 'Help Center', path: '/faq' },
       { name: 'FAQ', path: '/faq' },
       { name: 'Shipping Info', path: '/shipping' },
-      { name: 'Returns', path: '/returns' },
-      { name: 'Track Order', path: '/track' }
+      { name: 'Returns', path: '/returns' }
     ],
     legal: [
       { name: 'Privacy Policy', path: '/privacy' },

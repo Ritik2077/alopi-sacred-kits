@@ -17,8 +17,7 @@ const Navbar = () => {
     { name: 'Subscription', path: '/subscription' },
     { name: 'Shop', path: '/shop' },
     { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' },
-    { name: 'FAQ', path: '/faq' }
+    { name: 'Contact', path: '/contact' }
   ];
 
   return (
@@ -45,7 +44,7 @@ const Navbar = () => {
                 <button
                   key={item.name}
                   onClick={() => navigate(item.path)}
-                  className="text-gray-700 hover:text-orange-600 px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 relative group"
+                  className="relative text-gray-700 hover:text-orange-600 px-3 py-2 text-sm font-medium transition-colors duration-300 group"
                 >
                   {item.name}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"></span>
@@ -59,7 +58,7 @@ const Navbar = () => {
             <Button
               variant="outline"
               onClick={() => navigate('/cart')}
-              className="relative glass-card border-orange-200 text-orange-700 hover:bg-orange-50 hover-lift"
+              className="relative glass-card border-orange-200 text-orange-700 hover:bg-orange-50 transition-all duration-300"
             >
               <ShoppingCart className="w-4 h-4 mr-2" />
               <span className="hidden sm:inline">Cart</span>
@@ -74,7 +73,7 @@ const Navbar = () => {
             <Button
               variant="outline"
               onClick={() => navigate(isAuthenticated ? '/profile' : '/login')}
-              className="glass-card border-gray-300 text-gray-700 hover:bg-gray-50 hover-lift"
+              className="glass-card border-gray-300 text-gray-700 hover:bg-gray-50 transition-all duration-300"
             >
               <User className="w-4 h-4 mr-2" />
               <span className="hidden sm:inline">
@@ -84,7 +83,7 @@ const Navbar = () => {
             
             <Button 
               onClick={() => navigate('/subscription')}
-              className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white hover-lift animate-pulse-glow"
+              className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white transition-all duration-300 animate-pulse-glow"
             >
               <span className="hidden sm:inline">Subscribe Now</span>
               <span className="sm:hidden">Subscribe</span>
@@ -96,7 +95,7 @@ const Navbar = () => {
             <Button
               variant="ghost"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="glass-card hover-lift"
+              className="glass-card transition-all duration-300"
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </Button>

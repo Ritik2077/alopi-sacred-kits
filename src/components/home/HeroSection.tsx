@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Sparkles, Star, Heart, ShoppingBag } from "lucide-react";
+import { ArrowRight, Play, Sparkles, Star, Heart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
@@ -70,20 +70,6 @@ const HeroSection = () => {
               >
                 <Play className="mr-2 w-5 h-5" />
                 Explore Products
-              </Button>
-            </div>
-            
-            {/* More Products Button */}
-            <div className="flex justify-center lg:justify-start">
-              <Button 
-                variant="ghost"
-                size="lg"
-                onClick={() => navigate('/shop')}
-                className="text-orange-600 hover:text-orange-700 hover:bg-orange-50 px-6 py-3 rounded-full font-medium group transition-all duration-300"
-              >
-                <ShoppingBag className="mr-2 w-5 h-5" />
-                More Products
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
             
