@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Sparkles, Star, Heart } from "lucide-react";
+import { ArrowRight, Play, Sparkles, Star, Heart, ShoppingBag } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
@@ -39,14 +39,14 @@ const HeroSection = () => {
             
             <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0">
               Transform your spiritual practice with curated pooja kits delivered fresh to your doorstep. 
-              Experience the divine connection through authentic, premium essentials.
+              Experience the divine connection through Authentic, Premium essentials.
             </p>
             
-            <div className="flex flex-col sm:flex-row xl:flex-col 2xl:flex-row gap-4 justify-center lg:justify-start max-w-4xl">
+            <div className="flex flex-col sm:flex-row xl:flex-col 2xl:flex-row gap-4 justify-center lg:justify-start max-w-4xl mb-8">
               <Button 
                 size="lg" 
                 onClick={() => navigate('/devotee-selection')}
-                className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-6 xl:px-8 py-4 rounded-full font-semibold group w-full sm:w-auto"
+                className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-6 xl:px-8 py-4 rounded-full font-semibold group w-full sm:w-auto transition-all duration-300"
               >
                 <Heart className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
                 Choose Your Path
@@ -56,7 +56,7 @@ const HeroSection = () => {
               <Button 
                 size="lg" 
                 onClick={() => navigate('/subscription')}
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 xl:px-8 py-4 rounded-full font-semibold group w-full sm:w-auto"
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 xl:px-8 py-4 rounded-full font-semibold group w-full sm:w-auto transition-all duration-300"
               >
                 Start Your Spiritual Journey
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -66,22 +66,36 @@ const HeroSection = () => {
                 variant="outline" 
                 size="lg"
                 onClick={() => navigate('/shop')}
-                className="border-2 border-orange-300 text-orange-700 hover:bg-orange-50 px-6 xl:px-8 py-4 rounded-full font-semibold group w-full sm:w-auto"
+                className="border-2 border-orange-300 text-orange-700 hover:bg-orange-50 px-6 xl:px-8 py-4 rounded-full font-semibold group w-full sm:w-auto transition-all duration-300"
               >
                 <Play className="mr-2 w-5 h-5" />
                 Explore Products
               </Button>
             </div>
             
+            {/* More Products Button */}
+            <div className="flex justify-center lg:justify-start">
+              <Button 
+                variant="ghost"
+                size="lg"
+                onClick={() => navigate('/shop')}
+                className="text-orange-600 hover:text-orange-700 hover:bg-orange-50 px-6 py-3 rounded-full font-medium group transition-all duration-300"
+              >
+                <ShoppingBag className="mr-2 w-5 h-5" />
+                More Products
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </div>
+            
             {/* Stats */}
             <div className="flex items-center gap-8 mt-12 justify-center lg:justify-start">
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-800">10,000+</div>
+                <div className="text-2xl font-bold text-gray-800">50,000+</div>
                 <div className="text-sm text-gray-600">Happy Devotees</div>
               </div>
               <div className="text-center">
                 <div className="flex items-center justify-center gap-1">
-                  <span className="text-2xl font-bold text-gray-800">4.9</span>
+                  <span className="text-2xl font-bold text-gray-800">4.7</span>
                   <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                 </div>
                 <div className="text-sm text-gray-600">Customer Rating</div>

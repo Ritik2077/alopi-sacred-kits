@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Sparkles, Star } from "lucide-react";
+import { Sparkles, Star, Facebook, Instagram, Youtube, Linkedin, Twitter } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
@@ -16,7 +16,6 @@ const Footer = () => {
       { name: 'Press', path: '/press' }
     ],
     products: [
-      { name: 'Subscription Plans', path: '/subscription' },
       { name: 'Daily Kits', path: '/shop' },
       { name: 'Festival Specials', path: '/shop' },
       { name: 'Premium Items', path: '/shop' },
@@ -39,10 +38,11 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { name: 'Facebook', icon: Star, url: '#' },
-    { name: 'Twitter', icon: Star, url: '#' },
-    { name: 'Instagram', icon: Star, url: '#' },
-    { name: 'YouTube', icon: Star, url: '#' }
+    { name: 'Facebook', icon: Facebook, url: 'https://facebook.com/alopi' },
+    { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/alopi' },
+    { name: 'YouTube', icon: Youtube, url: 'https://youtube.com/alopi' },
+    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/company/alopi' },
+    { name: 'Twitter', icon: Twitter, url: 'https://twitter.com/alopi' }
   ];
 
   return (
@@ -95,7 +95,7 @@ const Footer = () => {
                 </div>
                 
                 <p className="text-gray-300 mb-6 leading-relaxed">
-                  Transforming spiritual practices across India with authentic, premium pooja essentials 
+                  Transforming spiritual practices across India with Authentic, Premium pooja essentials 
                   delivered fresh to your doorstep. Experience the divine connection through our 
                   thoughtfully curated daily kits.
                 </p>
@@ -178,6 +178,8 @@ const Footer = () => {
                     <a
                       key={index}
                       href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gradient-to-br hover:from-orange-500 hover:to-red-600 transition-all duration-300 group"
                       aria-label={social.name}
                     >

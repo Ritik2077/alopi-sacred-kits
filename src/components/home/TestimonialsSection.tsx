@@ -1,9 +1,20 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, Quote } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 const TestimonialsSection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const testimonials = [
     {
       id: 1,
@@ -26,7 +37,7 @@ const TestimonialsSection = () => {
       name: "Meera Patel",
       location: "Ahmedabad, Gujarat",
       rating: 5,
-      text: "The authenticity and purity of Alopi's products is unmatched. My family has been using their services for 6 months now and we're completely satisfied with the quality.",
+      text: "The Authenticity and purity of Alopi's products is unmatched. My family has been using their services for 6 months now and we're completely satisfied with the quality.",
       image: "MP"
     },
     {
@@ -55,6 +66,19 @@ const TestimonialsSection = () => {
     }
   ];
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const getVisibleTestimonials = () => {
+    if (!isMobile) return testimonials;
+    return [testimonials[currentSlide]];
+  };
+
   return (
     <section className="py-20 bg-white relative overflow-hidden">
       {/* Background Pattern */}
@@ -81,16 +105,49 @@ const TestimonialsSection = () => {
           
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Discover how Alopi has enriched the spiritual lives of thousands of families across India 
-            with our authentic and convenient pooja essentials.
+            with our Authentic and convenient pooja essentials.
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => (
+        {/* Mobile Carousel Controls */}
+        {isMobile && (
+          <div className="flex justify-center items-center gap-4 mb-8">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={prevSlide}
+              className="rounded-full border-orange-200 hover:bg-orange-50"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </Button>
+            <div className="flex gap-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    index === currentSlide ? 'bg-orange-600' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={nextSlide}
+              className="rounded-full border-orange-200 hover:bg-orange-50"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </Button>
+          </div>
+        )}
+
+        {/* Testimonials Grid/Carousel */}
+        <div className={`${isMobile ? 'flex justify-center' : 'grid md:grid-cols-2 lg:grid-cols-3 gap-8'}`}>
+          {getVisibleTestimonials().map((testimonial) => (
             <Card 
               key={testimonial.id}
-              className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-orange-50 hover:-translate-y-1"
+              className="group transition-all duration-300 border-0 bg-gradient-to-br from-white to-orange-50 shadow-lg hover:shadow-xl hover:-translate-y-1"
             >
               <CardContent className="p-8">
                 {/* Quote Icon */}
@@ -127,18 +184,14 @@ const TestimonialsSection = () => {
 
         {/* Trust Indicators */}
         <div className="mt-16 text-center">
-          <div className="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl font-bold text-gray-800 mb-2">10,000+</div>
+              <div className="text-3xl font-bold text-gray-800 mb-2">50,000+</div>
               <div className="text-gray-600">Satisfied Customers</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-gray-800 mb-2">4.9/5</div>
+              <div className="text-3xl font-bold text-gray-800 mb-2">4.7/5</div>
               <div className="text-gray-600">Average Rating</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-gray-800 mb-2">50+</div>
-              <div className="text-gray-600">Cities Served</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-gray-800 mb-2">365</div>

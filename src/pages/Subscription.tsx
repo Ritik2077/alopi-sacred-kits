@@ -105,7 +105,7 @@ const Subscription = () => {
     {
       icon: Shield,
       title: 'Premium Quality',
-      description: 'Hand-picked items from trusted sources, ensuring purity and authenticity'
+      description: 'Hand-picked items from trusted sources, ensuring purity and Authenticity'
     }
   ];
 
@@ -169,18 +169,18 @@ const Subscription = () => {
             
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
               Join thousands of devotees who have enhanced their daily spiritual practice with our 
-              premium pooja essentials delivered fresh to their doorstep.
+              Premium pooja essentials delivered fresh to their doorstep.
             </p>
 
             {/* Quick Stats */}
             <div className="flex items-center justify-center gap-8 mb-12">
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-800">10,000+</div>
+                <div className="text-2xl font-bold text-gray-800">50,000+</div>
                 <div className="text-sm text-gray-600">Active Subscribers</div>
               </div>
               <div className="text-center">
                 <div className="flex items-center justify-center gap-1">
-                  <span className="text-2xl font-bold text-gray-800">4.9</span>
+                  <span className="text-2xl font-bold text-gray-800">4.7</span>
                   <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                 </div>
                 <div className="text-sm text-gray-600">Average Rating</div>
@@ -255,7 +255,7 @@ const Subscription = () => {
                   </ul>
                   
                   <Button 
-                    className={`w-full py-3 rounded-full font-semibold ${
+                    className={`w-full py-3 rounded-full font-semibold transition-all duration-300 ${
                       selectedPlan === plan.id
                         ? 'bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white'
                         : plan.popular
@@ -292,29 +292,61 @@ const Subscription = () => {
             </div>
           </div>
 
-          {/* Detailed Subscription Benefits */}
+          {/* Improved Why Choose Alopi Section */}
           <div className="mb-16">
-            <Card className="bg-gradient-to-r from-orange-50 to-red-50 border-0">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-center text-gray-800 mb-8">Why Choose Alopi Subscription?</h3>
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="font-bold text-lg mb-4">🎯 Convenience & Reliability</h4>
-                    <ul className="space-y-2 text-gray-700">
-                      <li>• Never run out of pooja essentials</li>
-                      <li>• Scheduled delivery before your prayer time</li>
-                      <li>• Skip the daily market trips</li>
-                      <li>• Consistent quality you can trust</li>
-                    </ul>
+            <Card className="bg-gradient-to-r from-orange-50 to-red-50 border-0 max-w-6xl mx-auto">
+              <CardContent className="p-8 lg:p-12">
+                <h3 className="text-3xl font-bold text-center text-gray-800 mb-12">Why Choose Alopi Subscription?</h3>
+                
+                <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                  <div className="text-center lg:text-left">
+                    <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-6">
+                      <Clock className="w-8 h-8 text-white" />
+                    </div>
+                    <h4 className="text-2xl font-bold mb-6 text-gray-800">🎯 Convenience & Reliability</h4>
+                    <div className="space-y-4">
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-gray-700 leading-relaxed">Never run out of pooja essentials</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-gray-700 leading-relaxed">Scheduled delivery before your prayer time</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-gray-700 leading-relaxed">Skip the daily market trips</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-gray-700 leading-relaxed">Consistent quality you can trust</p>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-lg mb-4">💰 Value & Savings</h4>
-                    <ul className="space-y-2 text-gray-700">
-                      <li>• Up to 45% savings compared to retail</li>
-                      <li>• No delivery charges</li>
-                      <li>• Bulk pricing benefits</li>
-                      <li>• Festival special inclusions at no extra cost</li>
-                    </ul>
+                  
+                  <div className="text-center lg:text-left">
+                    <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-6">
+                      <Heart className="w-8 h-8 text-white" />
+                    </div>
+                    <h4 className="text-2xl font-bold mb-6 text-gray-800">💰 Value & Savings</h4>
+                    <div className="space-y-4">
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-gray-700 leading-relaxed">Up to 45% savings compared to retail</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-gray-700 leading-relaxed">No delivery charges</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-gray-700 leading-relaxed">Bulk pricing benefits</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-gray-700 leading-relaxed">Festival special inclusions at no extra cost</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -343,7 +375,7 @@ const Subscription = () => {
                 },
                 {
                   q: "Can I customize my kit contents?",
-                  a: "Yes, premium and annual subscribers can customize their kits based on their specific needs and traditions."
+                  a: "Yes, Premium and annual subscribers can customize their kits based on their specific needs and traditions."
                 }
               ].map((faq, index) => (
                 <Card key={index} className="bg-white/80 backdrop-blur-sm border-0">
@@ -386,3 +418,5 @@ const Subscription = () => {
 };
 
 export default Subscription;
+
+</edits_to_apply>

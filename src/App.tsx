@@ -22,6 +22,14 @@ import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
+import Careers from "./pages/Careers";
+import Press from "./pages/Press";
+import Shipping from "./pages/Shipping";
+import Returns from "./pages/Returns";
+import Track from "./pages/Track";
+import Cookies from "./pages/Cookies";
+import Refund from "./pages/Refund";
+import Security from "./pages/Security";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -51,6 +59,14 @@ const App = () => (
               <Route path="/faq" element={<FAQ />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
+              <Route path="/careers" element={<Careers />} />
+              <Route path="/press" element={<Press />} />
+              <Route path="/shipping" element={<Shipping />} />
+              <Route path="/returns" element={<Returns />} />
+              <Route path="/track" element={<Track />} />
+              <Route path="/cookies" element={<Cookies />} />
+              <Route path="/refund" element={<Refund />} />
+              <Route path="/security" element={<Security />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
